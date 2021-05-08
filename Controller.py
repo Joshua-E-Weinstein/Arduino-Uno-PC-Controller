@@ -12,14 +12,13 @@ board = Arduino('COM5')  # Initialize the board
 it = util.Iterator(board)
 it.start()
 
-digitalInputA = board.get_pin('d:2:i')  # Set digital pin 8 to input.
-digitalInputB = board.get_pin('d:4:i')  # Set digital pin 8 to input.
-digitalInputC = board.get_pin('d:7:i')  # Set digital pin 8 to input.
-digitalInputD = board.get_pin('d:8:i')  # Set digital pin 8 to input.
-digitalInputE = board.get_pin('d:12:i')  # Set digital pin 8 to input.
+digitalList = [2,4,7,8,12]
+for digitalInputPin in digitalList:
+    digitalInputA = board.get_pin('d:{}:i'.format(digitalInputPin))  # Set digital pin to input.
 
-analogInputA = board.get_pin('a:0:i')  # Set analog pin 0 to input.
-analogInputB = board.get_pin('a:1:i')  # Set analog pin 1 to input.
+analogList = [0, 1]
+for analogInputPin in analogList:
+    analogInputA = board.get_pin('a:{}:i'.format(analogInputPin))  # Set analog pin to input.
 
 # Get a volume object for PC's master volume.
 devices = AudioUtilities.GetSpeakers()
